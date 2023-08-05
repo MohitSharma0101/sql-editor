@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "@emotion/styled";
+import { Header } from "./Components/Header";
+import { MainLayout } from "./Components/MainLayout";
+import { ThemeProvider, createTheme } from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#127FBF',
+      light: ""
+    },
+    secondary: {
+      main: '#81DEFD',
+    },
+  },
+
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <Header />
+        <MainLayout />
+      </Wrapper>
+    </ThemeProvider>
+
   );
 }
+
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
 
 export default App;
